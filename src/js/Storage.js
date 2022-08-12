@@ -1,4 +1,4 @@
-const categories = [
+const Products = [
   {
     id: 1,
     title: "React.js",
@@ -34,7 +34,7 @@ export default class Storage {
     const savedCategories = JSON.parse(localStorage.getItem("category")) || [];
     // sorted Data
     const sortedCategories = savedCategories.sort((a, b) => {
-      return new Date(a.createdAt) > new Data(b.createdAt) ? -1 : 1;
+      return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
     });
     return sortedCategories;
   }

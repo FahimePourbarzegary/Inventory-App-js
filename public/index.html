@@ -7,5 +7,122 @@
     <title>Inventory App With js and tailwind</title>
     <link rel="stylesheet" href="./build/tailwind.css" />
   </head>
-  <body></body>
+  <body class="bg-slate-800">
+    <div class=" ">
+      <!-- nav section -->
+      <div
+        class="h-12 flex justify-center items-center gap-x-4 bg-slate-700 p-1 mb-8"
+      >
+        <h1 class="text-xl font-bold text-slate-300">
+          Inventory App (Js & Tailwind)
+        </h1>
+        <span
+          class="flex items-center justify-center w-7 h-7 rounded-full border-2 border-slate-300 font-bold bg-slate-500 text-slate-300"
+          >5</span
+        >
+      </div>
+      <!-- content section-->
+      <div class="container max-w-screen-sm mx-auto">
+        <!--category form -->
+        <div class="mb-6">
+          <h2 class="text-xl text-slate-300 font-bold">Add New Category</h2>
+          <form class="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
+            <div>
+              <label for="category-title" class="block mb-1 text-slate-400"
+                >title
+              </label>
+              <input
+                type="text"
+                name="category-title"
+                id="category-title"
+                placeholder="title..."
+                class="bg-transparent text-slate-400 rounded-xl border border-slate-500"
+              />
+            </div>
+            <div>
+              <label
+                for="category-description"
+                class="block mb-1 text-slate-400"
+                >description</label
+              >
+              <textarea
+                type="text"
+                name="category-description"
+                id="category-description"
+                class="bg-transparent text-slate-400 rounded-xl border border-slate-500 w-full"
+              ></textarea>
+            </div>
+            <div class="flex items-center justify-between gap-x-2">
+              <button
+                class="flex-1 text-slate-400 border border-slate-400 rounded-xl py-2"
+              >
+                Cancel
+              </button>
+              <button
+                class="flex-1 text-slate-200 bg-slate-500 rounded-xl py-2"
+              >
+                Add New Category
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- product form -->
+        <div class="mb-6">
+          <h2 class="text-xl text-slate-300 font-bold">Add New Product</h2>
+          <form class="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
+            <div>
+              <label for="product-title" class="block mb-1 text-slate-400"
+                >Product title
+              </label>
+              <input
+                type="text"
+                name="product-title"
+                id="product-title"
+                placeholder="title..."
+                class="bg-transparent text-slate-400 rounded-xl border border-slate-500"
+              />
+            </div>
+            <div>
+              <label for="product-quantity" class="block mb-1 text-slate-400"
+                >Quantity</label
+              >
+              <input
+                type="number"
+                name="product-quantity"
+                id="product-quantity"
+                class="bg-transparent text-slate-400 rounded-xl border border-slate-500"
+              />
+            </div>
+            <div>
+              <label for="product-category" class="block mb-1 text-slate-400"
+                >Category</label
+              >
+              <select
+                name="product-category"
+                id="product-category"
+                class="bg-transparent text-slate-400 rounded-xl w-full"
+              >
+                <option class="bg-slate-500 text-slate-400" value="volvo">
+                  Select a Category
+                </option>
+                <option class="bg-slate-500 text-slate-400" value="backend">
+                  backend
+                </option>
+                <option class="bg-slate-500 text-slate-400" value="frontend">
+                  frontend
+                </option>
+              </select>
+            </div>
+            <div class="flex items-center justify-between gap-x-2">
+              <button
+                class="flex-1 text-slate-200 bg-slate-500 rounded-xl py-2"
+              >
+                Add New Category
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

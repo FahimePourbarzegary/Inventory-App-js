@@ -65,14 +65,14 @@ export default class Storage {
     const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
     // sorted Data
     const sortedProducts = savedProducts.sort((a, b) => {
-      return new Date(a.createdAt) > new Data(b.createdAt) ? -1 : 1;
+      return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
     });
     return sortedProducts;
   }
   // save new Data or Edit exist Data
   static saveProduct(productToSave) {
     //getAllCategories
-    const savedProducts = Storage.getAllProductsavedProducts();
+    const savedProducts = Storage.getAllProducts();
     //check Data new or exist
     const existedItem = savedProducts.find((c) => c.id == productToSave.id);
 

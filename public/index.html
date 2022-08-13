@@ -24,7 +24,8 @@
       <!-- content section-->
       <div class="container max-w-screen-sm mx-auto">
         <!--category form -->
-        <div class="mb-6">
+
+        <div class="mb-6 hidden" id="category-wrapper">
           <h2 class="text-xl text-slate-300 font-bold">Add New Category</h2>
           <form class="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
             <div>
@@ -55,6 +56,7 @@
             <div class="flex items-center justify-between gap-x-2">
               <button
                 class="flex-1 text-slate-400 border border-slate-400 rounded-xl py-2"
+                id="cancel-categoryBtn"
               >
                 Cancel
               </button>
@@ -67,6 +69,12 @@
             </div>
           </form>
         </div>
+        <h2
+          class="text-xl mb-8 text-slate-500 font-bold cursor-pointer transition-all duration-300 hover:text-slate-300"
+          id="toggle-add-category"
+        >
+          Add New Category
+        </h2>
         <!-- product form -->
         <div class="mb-6">
           <h2 class="text-xl text-slate-300 font-bold">Add New Product</h2>
@@ -118,11 +126,13 @@
             </div>
           </form>
         </div>
+
         <!-- product-list -->
         <h2 class="text-xl text-slate-300 font-bold mb-2">Product List</h2>
         <div class="flex justify-between items-center mb-6">
           <label for="search-input" class="text-slate-400 text-3xl font-bold"
-            >Search</label>
+            >Search</label
+          >
           <input
             type="text"
             name="search-input"
@@ -132,14 +142,23 @@
         </div>
         <div class="flex justify-between items-center mb-6">
           <label for="sort-products" class="text-slate-400 text-3xl font-bold"
-            >Sort</label>
-          <select name="sort-products" id="sort-products" class="bg-transparent text-slate-400 rounded-xl ">
-                <option class="bg-slate-500 text-slate-400" selected="selected" value="newest"  >
-                  newest
-                </option>
-                <option class="bg-slate-500 text-slate-400" value="oldest">
-                  oldest
-                </option>
+            >Sort</label
+          >
+          <select
+            name="sort-products"
+            id="sort-products"
+            class="bg-transparent text-slate-400 rounded-xl"
+          >
+            <option
+              class="bg-slate-500 text-slate-400"
+              selected="selected"
+              value="newest"
+            >
+              newest
+            </option>
+            <option class="bg-slate-500 text-slate-400" value="oldest">
+              oldest
+            </option>
           </select>
         </div>
         <div id="products-list"></div>

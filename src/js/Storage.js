@@ -60,14 +60,14 @@ export default class Storage {
   }
   //......Products.....
   //getAllProducts
-  static getAllProducts(sort="newest") {
+  static getAllProducts(sort = "newest") {
     // get Data From localStorage
     const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
     // sorted Data
     const sortedProducts = savedProducts.sort((a, b) => {
-      if(sort==="newest"){
+      if (sort === "newest") {
         return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
-      }else if(sort==="oldest"){
+      } else if (sort === "oldest") {
         return new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1;
       }
     });
@@ -93,5 +93,10 @@ export default class Storage {
     }
     //save to localStorage
     localStorage.setItem("products", JSON.stringify(savedProducts));
+  }
+  static deleteProduct(id) {
+    const savedProducts = Storage.getAllProducts();
+    const filteredProducts = savedProducts.filter((p) => p.id !== parseInt(id));
+    localStorage.setItem("products", JSON.stringify(filteredProducts));
   }
 }

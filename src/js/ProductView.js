@@ -29,10 +29,12 @@ class ProductView {
   }
   createProductList(products) {
     let result = ``;
+    let allQuantity = 0;
     products.forEach((item) => {
       const selectedCategory = Storage.getAllCategories().find(
         (c) => c.id == item.category
       );
+      allQuantity += parseInt(item.quantity);
       result += `<div class="flex items-center justify-between mb-8" >
           <span class="text-slate-400">${item.title}</span>
           <div class="flex items-center gap-x-3">
@@ -63,6 +65,8 @@ class ProductView {
     deleteBtn.forEach((item) => {
       item.addEventListener("click", (e) => this.deleteProduct(e));
     });
+    const allQuantityValue = document.querySelector("#all-quantity-value");
+    allQuantityValue.innerHTML = allQuantity;
   }
   searchProducts(e) {
     const value = e.target.value.trim().toLowerCase();

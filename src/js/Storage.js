@@ -78,7 +78,9 @@ export default class Storage {
     //getAllCategories
     const savedProducts = Storage.getAllProducts();
     //check Data new or exist
-    const existedItem = savedProducts.find((c) => c.id == productToSave.id);
+    const existedItem = savedProducts.find(
+      (c) => c.id === parseInt(productToSave.id)
+    );
 
     if (existedItem) {
       //Edit
@@ -98,5 +100,10 @@ export default class Storage {
     const savedProducts = Storage.getAllProducts();
     const filteredProducts = savedProducts.filter((p) => p.id !== parseInt(id));
     localStorage.setItem("products", JSON.stringify(filteredProducts));
+  }
+  static editProduct(id) {
+    const savedProducts = Storage.getAllProducts();
+    const filteredProducts = savedProducts.filter((p) => p.id === parseInt(id));
+    return filteredProducts;
   }
 }

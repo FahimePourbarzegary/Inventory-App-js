@@ -1,14 +1,21 @@
 import Storage from "./Storage.js";
-
+import CategoryView from "./CategoryView.js";
 const addNewProductBtn = document.querySelector("#add-new-product");
 const searchInput = document.querySelector("#search-input");
 const selectedSort = document.querySelector("#sort-products");
+const productEditWrapper = document.querySelector("#product-edit-wrapper");
+const titleOfEdit = document.querySelector("#product-title-edit");
+const quantitiyOfEdit = document.querySelector("#product-quantity-edit");
+const categoryOfEdit = document.querySelector("#product-category-edit");
+const editBtn = document.querySelector("#edit-product");
 class ProductView {
   constructor() {
     addNewProductBtn.addEventListener("click", (e) => this.addNewProduct(e));
     searchInput.addEventListener("input", (e) => this.searchProducts(e));
     selectedSort.addEventListener("change", (e) => this.sortProducts(e));
+    editBtn.addEventListener("click", (e) => this.editProduct(e));
     this.products = [];
+    this.idOfEdit = null;
   }
   addNewProduct(e) {
     e.preventDefault();
@@ -56,15 +63,29 @@ class ProductView {
             >
               delete
             </button>
+             <button
+              class="edit-product border px-2 py-0.5 rounded-2xl border-green-500 text-green-500" data-product-id=${
+                item.id
+              }
+            >
+              edit
+            </button>
           </div>
         </div>`;
     });
     const productDOM = document.getElementById("products-list");
     productDOM.innerHTML = result;
+
     const deleteBtn = [...document.querySelectorAll(".delete-product")];
     deleteBtn.forEach((item) => {
       item.addEventListener("click", (e) => this.deleteProduct(e));
     });
+
+    const editBtn = [...document.querySelectorAll(".edit-product")];
+    editBtn.forEach((item) => {
+      item.addEventListener("click", (e) => this.openEditProduct(e));
+    });
+
     const allQuantityValue = document.querySelector("#all-quantity-value");
     allQuantityValue.innerHTML = allQuantity;
   }
@@ -85,6 +106,33 @@ class ProductView {
     Storage.deleteProduct(productId);
     this.products = Storage.getAllProducts();
     this.createProductList(this.products);
+  }
+  openEditProduct(e) {
+    console.log(e.target.dataset.productId);
+    const item = Storage.editProduct(e.target.dataset.productId);
+    console.log(item[0]);
+    productEditWrapper.classList.remove("hidden");
+    CategoryView.createCategoryList();
+    this.idOfEdit = item[0].id;
+    titleOfEdit.value = item[0].title;
+    quantitiyOfEdit.value = item[0].quantity;
+    categoryOfEdit.value = item[0].category;
+  }
+  editProduct(e) {
+    e.preventDefault();
+    const title = titleOfEdit.value;
+    const quantity = quantitiyOfEdit.value;
+    const category = categoryOfEdit.value;
+    const id = this.idOfEdit;
+    if (!title || !quantity || !category) return;
+    Storage.saveProduct({ id, title, quantity, category });
+    this.products = Storage.getAllProducts();
+    //update
+    this.createProductList(this.products);
+    titleOfEdit.value = "";
+    quantitiyOfEdit.value = "";
+    categoryOfEdit.value = "";
+    productEditWrapper.classList.add("hidden");
   }
 }
 export default new ProductView();

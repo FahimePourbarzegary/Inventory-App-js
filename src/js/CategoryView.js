@@ -45,7 +45,9 @@ class CategoryView {
                 </option>`;
     });
     const categoryDOM = document.querySelector("#product-category");
+    const categoryEdit = document.querySelector("#product-category-edit");
     categoryDOM.innerHTML = result;
+    categoryEdit.innerHTML=result;
   }
   toggleAddCategory(e) {
     e.preventDefault();

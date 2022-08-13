@@ -122,14 +122,66 @@
                 id="add-new-product"
                 class="flex-1 text-slate-200 bg-slate-500 rounded-xl py-2"
               >
-                Add New Category
+                Add New Product
               </button>
             </div>
           </form>
         </div>
-
+        <!-- product  edit form -->
+        <div class="mb-6 hidden" id="product-edit-wrapper">
+          <h2 class="text-xl text-slate-300 font-bold">Edit Product</h2>
+          <form class="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
+            <div>
+              <label for="product-title-edit" class="block mb-1 text-slate-400"
+                >Product title
+              </label>
+              <input
+                type="text"
+                name="product-title-edit"
+                id="product-title-edit"
+                placeholder="title..."
+                class="bg-transparent text-slate-400 rounded-xl border border-slate-500"
+              />
+            </div>
+            <div>
+              <label for="product-quantity-edit" class="block mb-1 text-slate-400"
+                >Quantity</label
+              >
+              <input
+                type="number"
+                name="product-quantity-edit"
+                id="product-quantity-edit"
+                class="bg-transparent text-slate-400 rounded-xl border border-slate-500"
+              />
+            </div>
+            <div>
+              <label for="product-category-edit" class="block mb-1 text-slate-400"
+                >Category</label
+              >
+              <select
+                name="product-category-edit"
+                id="product-category-edit"
+                class="bg-transparent text-slate-400 rounded-xl w-full"
+              >
+                <!--  <option class="bg-slate-500 text-slate-400" value="selectCategory">
+                  Select a Category
+                </option> -->
+              </select>
+            </div>
+            <div class="flex items-center justify-between gap-x-2">
+             
+              <button
+                id="edit-product"
+                class="flex-1 text-slate-200 bg-slate-500 rounded-xl py-2"
+              >
+                Edit Product
+              </button>
+            </div>
+          </form>
+        </div>
         <!-- product-list -->
         <h2 class="text-xl text-slate-300 font-bold mb-2">Product List</h2>
+        <!--Search Section-->
         <div class="flex justify-between items-center mb-6">
           <label for="search-input" class="text-slate-400 text-3xl font-bold"
             >Search</label
@@ -141,6 +193,7 @@
             class="bg-transparent text-slate-400 rounded-xl border border-slate-500"
           />
         </div>
+        <!--Sort Section-->
         <div class="flex justify-between items-center mb-6">
           <label for="sort-products" class="text-slate-400 text-3xl font-bold"
             >Sort</label
